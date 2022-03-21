@@ -1,0 +1,217 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand text-light" href="#">
+            <img src="/images/job-icon.jpg" alt="" width="50" height="40"
+                class="d-inline-block align-text-center rounded-circle">
+            Job Portal
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" href="#">Contact Us</a>
+                <a class="nav-link active" href="#">About Us</a>
+                <a class="nav-link active">Companies</a>
+            </div>
+        </div>
+        <div class="dropdown me-3">
+            <button class="btn btn-outline-light dropdown-toggle me-5" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user-large"></i>
+            </button>
+            <ul class="dropdown-menu me-2" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item text-primary" href="#">Profile</a></li>
+                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{{!-- Here starts carousel --}}
+
+<div id="carouselExampleDark" class="carousel carousel-light slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <img src="/images/carousel3.jpg" class="d-block w-100" alt="..." style="height:80vh;">
+            <div class="carousel-caption d-none d-md-block ">
+                <h1>First slide label</h1>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img src="/images/carousel1.jpg" class="d-block w-100" alt="..." style="height:80vh;">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Some representative placeholder content for the second slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/images/carousel1.jpg" class="d-block w-100" alt="..." style="height:80vh;">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+{{!-- here ends carousel --}}
+
+<div class="container m-md-5 m-sm-0">
+    <h2 class="text-center m-5" style="font-size: 2.6em;">
+        Companies
+    </h2>
+    <div class="row g-4">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="card" style="min-width: 15rem;">
+                <img src="data:image/png;base64,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"
+                    class="card-img-top" alt="..." height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Company Name</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-facebook-square"
+                            style="font-size: 25px;"></i></a>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-twitter-square"
+                            style="font-size: 25px;"></i></a>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-instagram"
+                            style="font-size: 25px;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card" style="min-width: 15rem;">
+                <img src="data:image/png;base64,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"
+                    class="card-img-top" alt="..." height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Company Name</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-facebook-square"></i></a>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-twitter-square"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card" style="min-width: 15rem;">
+                <img src="data:image/png;base64,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"
+                    class="card-img-top" alt="..." height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Company Name</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-facebook-square"></i></a>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-twitter-square"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card" style="min-width: 15rem;">
+                <img src="data:image/png;base64,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"
+                    class="card-img-top" alt="..." height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Company Name</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-facebook-square"></i></a>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-twitter-square"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="card" style="min-width: 15rem;">
+                <img src="data:image/png;base64,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"
+                    class="card-img-top" alt="..." height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Company Name</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-facebook-square"></i></a>
+                    <a href="#" class="btn btn-primary"><i class="fa-brands fa-twitter-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- jobs card begins --}}
+
+<div class="container m-md-5">
+    <h2 class="text-center m-5">
+        Jobs
+    </h2>
+    <div class="row g-4">
+        <div class="col-md-3 col-sm-6 item">
+            <div class="card item-card card-block ">
+
+                <h5 class="item-card-title mt-3 mb-3">Sierra Web Development • Owner</h5>
+                <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p>
+                <a class="text-primary text-end" href="/apply"><i class="fa-solid fa-hand-point-up"></i>Apply Now</a>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 item">
+            <div class="card item-card card-block">
+                <h5 class="card-title  mt-3 mb-3">ProVyuh</h5>
+                <p class="card-text">This is a company that builds websites, web .</p>
+                <a class="text-primary text-end" href="/apply"><i class="fa-solid fa-hand-point-up"></i>Apply Now</a>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 item">
+            <div class="card item-card card-block">
+                <h5 class="card-title  mt-3 mb-3">ProVyuh</h5>
+                <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p>
+                <a class="text-primary text-end" href="/apply"><i class="fa-solid fa-hand-point-up"></i>Apply Now</a>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 item">
+            <div class="card item-card card-block">
+                <h5 class="card-title  mt-3 mb-3">ProVyuh</h5>
+                <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p>
+                <a class="text-primary text-end" href="/apply"><i class="fa-solid fa-hand-point-up"></i>Apply Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- --}}
+
+<div class="bg-primary p-md-4">
+    <div class="container m-md-5">
+        <h2 class="text-light text-center mt-5">
+            About Us
+        </h2>
+
+        <p class="text-light m-md-5 p-4" style="text-align: justify;">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. A et sequi delectus magni assumenda perspiciatis
+            quibusdam sed blanditiis perferendis, pariatur repudiandae doloribus alias, ipsa corporis eos omnis adipisci
+            facilis. Quaerat, itaque. Maxime illum facilis consectetur, ullam modi dolor unde aut molestiae debitis
+            dolorum, itaque ut quis fuga molestias velit repellat nihil nulla dolorem asperiores blanditiis corporis!
+            Tenetur quis quam inventore nemo officiis quibusdam id, architecto, iure aspernatur neque fugiat unde, quae
+            ipsam. Saepe recusandae laudantium tempora ipsa? Cum nisi assumenda, fugit autem ea temporibus optio quam
+            soluta eos, minus perspiciatis incidunt at. Quia delectus neque molestiae doloribus fuga cupiditate nulla,
+            minima quaerat nam sed optio architecto dolorum nobis quo expedita suscipit quae consequatur vitae rem
+            animi? Maiores alias illo quasi qui ipsam iure hic nulla, ea praesentium aperiam expedita voluptatibus quae
+            odio. Tenetur, quibusdam facere. Maiores quo voluptatem sit nisi expedita aliquid explicabo repudiandae id!
+            Ipsa voluptatibus cupiditate dolores officia?
+            <br>
+            <br>
+        </p>
+    </div>
+</div>
