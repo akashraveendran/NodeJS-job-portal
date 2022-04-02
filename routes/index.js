@@ -8,7 +8,6 @@ const { getUserLogin,
     getHomePage,
     getJobsPage,
     getAllCompanies,
-    getJobApplicationForm,
     applyJob,
     getUserNotifications,
     getUserApplications
@@ -18,10 +17,11 @@ const { getUserLogin,
 router.route('/login').get(getUserLogin).post(doUserLogin)
 router.route('/signup').get(getUserSignup).post(createNewUser);
 router.route('/').get(getHomePage);
-router.route('/alljobs').get(getJobsPage);
+router.route("/update-user/:id")
+router.route('/user-jobs').get(getJobsPage);
 router.route('/companies').get(getAllCompanies);
-router.route('/apply-job/:id').get(getJobApplicationForm).post(applyJob);
-router.route('/notifications/:id').get(getUserNotifications);
+router.route('/apply-job/:id').get(applyJob) //job id
+// router.route('/notifications/:id').get(getUserNotifications);
 router.route('/user-applications/:id').get(getUserApplications);
 
 
