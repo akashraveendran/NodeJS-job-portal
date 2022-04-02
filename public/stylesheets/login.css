@@ -1,45 +1,60 @@
-body{
-    background: #98e0fd;
+body {
+    background: #4CAF50;
 }
-h1{
-    color:#7e685a;
+
+.myAlert-top {
+    position: fixed;
+    top: 5vh;
+    left: 2%;
+    width: 96%;
+}
+
+h1 {
+    color: #7e685a;
     margin-bottom: 5vh;
 }
-.container{
-    display:flex;
+
+.container {
+    display: flex;
     justify-content: center;
 }
-.card{
+
+.card {
     padding: 10vh 5vw;
-    margin-top: 10vh;
+    margin-top: 15vh;
     border-radius: 0;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+
 /* .cover-image{
     opacity: .7;
 } */
-.form-group{
-    margin-bottom:2vh;
+.form-group {
+    margin-bottom: 2vh;
 }
-.submit-btn{
+
+.submit-btn {
     background: white;
-    color: #e7717d;
+    color: #4CAF50;
     border-radius: 0;
-    border: 1px solid #e7717d;
-    transition: .5s;    
+    border: 1px solid #4CAF50;
+    transition: .5s;
 }
-.submit-btn:hover{
-    background: #e7717d;
+
+.submit-btn:hover {
+    background: #4CAF50;
     color: white;
     padding-right: 2vw;
 }
-.caption-text{
-    color: #e7717d;
+
+.caption-text {
+    color: #4CAF50;
     font-size: 1.2em;
     font-weight: 600;
     margin-bottom: 2vh;
 }
-.form-control{
+
+.form-control {
     border: none;
-    background-color: #fae4e7;
+    background-color: #dff3e0;
 }

@@ -10,12 +10,14 @@ const { getUserLogin,
     getAllCompanies,
     applyJob,
     getUserNotifications,
-    getUserApplications
+    getUserApplications,
+    logout
 } = require("../controllers/user-controller")
 
 
-router.route('/login').get(getUserLogin).post(doUserLogin)
 router.route('/signup').get(getUserSignup).post(createNewUser);
+router.route('/login').get(getUserLogin).post(doUserLogin);
+router.route("/logout").get(logout)
 router.route('/').get(getHomePage);
 router.route("/update-user/:id")
 router.route('/user-jobs').get(getJobsPage);

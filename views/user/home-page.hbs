@@ -9,8 +9,8 @@
     <meta content="For Seekers" name="description">
 
     <!-- Favicons -->
-    <link href="/img/favicon.png" rel="icon">
-    <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/images/favicon.png" rel="icon">
+    <link href="/images/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
@@ -28,13 +28,6 @@
 
     <!-- Main Stylesheet File -->
     <link href="/stylesheets/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-    Theme Name: JobPortal
-    Theme URL: https://bootstrapmade.com/JobPortal-bootstrap-business-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 
     <style>
         body {
@@ -164,6 +157,13 @@
                 width: 100%;
             }
         }
+
+        .myAlert-top {
+            position: fixed;
+            top: 15vh;
+            left: 2%;
+            width: 96%;
+        }
     </style>
 
 </head>
@@ -179,43 +179,55 @@
             <div id="logo" class="pull-left">
                 <h1><a href="#intro" class="scrollto">JobPortal</a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
-                <!-- <a href="#intro"><img src="/img/logo.png" alt="" title="" /></a>-->
+                <!-- <a href="#intro"><img src="/images/logo.png" alt="" title="" /></a>-->
             </div>
 
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="#intro">Home</a></li>
-                    <li><a href="internship.html">Internship</a></li>
+                    <li><a href="internship.html">Jobs</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#company">Companies</a></li>
-                    <li class="menu-has-children"><a href="">Account</a>
+                    {{#if user}}
+                    <li class="menu-has-children"><a href="#">{{user.name}}</a>
                         <ul>
-                            <li><button style="width:auto;">Login</button></li><br>
-                            <li><button style="width:auto;">Sign Up</button></li>
+                            <li><a href="/logout"><button style="width:100%;">Logout</button></a></li><br>
                         </ul>
                     </li>
+                    {{else}}
+                    <li class="menu-has-children"><a href="#">Account</a>
+                        <ul>
+                            <li><a href="/login"><button style="width:100%;">Login</button></a></li><br>
+                            <li><a href="/signup"><button style="width:100%;">Sign Up</button></a></li>
+                        </ul>
+                    </li>
+                    {{/if}}
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
     </header><!-- #header -->
 
+    <!-- alerts -->
     <!--==========================
     Intro Section
   ============================-->
     <section id="intro">
         <div class="intro-container">
             <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-
                 <div class="carousel-inner">
-
                     <div class="carousel-item active">
-                        <div class="carousel-background"><img src="/img/intro-carousel/2.jpg" alt=""></div>
+                        {{#if alertMessage}}
+                        <div class="myAlert-top alert alert-success">
+                            <strong>Success!</strong> {{alertMessage}}
+                        </div>
+                        {{/if}}
+                        <div class="carousel-background"><img src="/images/intro-carousel/2.jpg" alt=""></div>
                         <div class="carousel-container">
                             <div class="carousel-content">
                                 <h2>Get ahead.</h2>
-                                <h2>Get an internship!</h2>
-                                <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+                                <h2>Get Your Dream Job!</h2>
+                                <a href="/signup" class="btn-get-started scrollto">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -225,6 +237,7 @@
             </div>
         </div>
     </section><!-- #intro -->
+
 
     <main id="main">
 
@@ -250,7 +263,7 @@
                     <div class="col-md-4 wow fadeInUp">
                         <div class="about-col">
                             <div class="img">
-                                <img src="/img/about-mission.jpg" alt="" class="img-fluid">
+                                <img src="/images/about-mission.jpg" alt="" class="img-fluid">
                                 <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
                             </div>
                             <h2 class="title"><a href="#">Our Mission</a></h2>
@@ -268,7 +281,7 @@
                     <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="about-col">
                             <div class="img">
-                                <img src="/img/about-plan.jpg" alt="" class="img-fluid">
+                                <img src="/images/about-plan.jpg" alt="" class="img-fluid">
                                 <div class="icon"><i class="ion-ios-list-outline"></i></div>
                             </div>
                             <h2 class="title"><a href="#">Our Plan</a></h2>
@@ -281,7 +294,7 @@
                     <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="about-col">
                             <div class="img">
-                                <img src="/img/about-vision.jpg" alt="" class="img-fluid">
+                                <img src="/images/about-vision.jpg" alt="" class="img-fluid">
                                 <div class="icon"><i class="ion-ios-eye-outline"></i></div>
                             </div>
                             <h2 class="title"><a href="#">Our Vision</a></h2>
@@ -308,12 +321,12 @@
                 </header>
 
                 <div class="owl-carousel clients-carousel">
-                    <img src="/img/clients/REDhAT.png" alt="">
-                    <img src="/img/clients/COGNIZANT.jpg" alt="">
-                    <img src="/img/clients/infosys-logo.png" alt="">
-                    <img src="/img/clients/TCS.jpg" alt="">
-                    <img src="/img/clients/amazon-LOGO.jpg" alt="">
-                    <img src="/img/clients/cisco.png" alt="">
+                    <img src="/images/clients/REDhAT.png" alt="">
+                    <img src="/images/clients/COGNIZANT.jpg" alt="">
+                    <img src="/images/clients/infosys-logo.png" alt="">
+                    <img src="/images/clients/TCS.jpg" alt="">
+                    <img src="/images/clients/amazon-LOGO.jpg" alt="">
+                    <img src="/images/clients/cisco.png" alt="">
                 </div>
 
             </div>
@@ -332,61 +345,61 @@
                 <div class="owl-carousel testimonials-carousel">
 
                     <div class="testimonial-item">
-                        <img src="/img/sagar.jpg" class="testimonial-img" alt="">
+                        <img src="/images/sagar.jpg" class="testimonial-img" alt="">
                         <h3>Sagar Jadhav</h3>
                         <h4>Ceo &amp; Founder</h4>
                         <p>
-                            <img src="/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                            <img src="/images/quote-sign-left.png" class="quote-sign-left" alt="">
                             Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
                             Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                            <img src="/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                            <img src="/images/quote-sign-right.png" class="quote-sign-right" alt="">
                         </p>
                     </div>
 
                     <div class="testimonial-item">
-                        <img src="/img/om.jpg" class="testimonial-img" alt="">
+                        <img src="/images/om.jpg" class="testimonial-img" alt="">
                         <h3>Omkar Javadwar</h3>
                         <h4>Designer</h4>
                         <p>
-                            <img src="/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                            <img src="/images/quote-sign-left.png" class="quote-sign-left" alt="">
                             Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum
                             eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim
                             culpa.
-                            <img src="/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                            <img src="/images/quote-sign-right.png" class="quote-sign-right" alt="">
                         </p>
                     </div>
 
                     <div class="testimonial-item">
-                        <img src="/img/aishwarya.jpg" class="testimonial-img" alt="">
+                        <img src="/images/aishwarya.jpg" class="testimonial-img" alt="">
                         <h3>Aishwarya Joshi</h3>
                         <h4>Entrepreneur</h4>
                         <p>
-                            <img src="/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                            <img src="/images/quote-sign-left.png" class="quote-sign-left" alt="">
                             Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis
                             minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                            <img src="/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                            <img src="/images/quote-sign-right.png" class="quote-sign-right" alt="">
                         </p>
                     </div>
 
                     <!--<div class="testimonial-item">
-            <img src="/img/testimonial-4.jpg" class="testimonial-img" alt="">
+            <img src="/images/testimonial-4.jpg" class="testimonial-img" alt="">
             <h3>Matt Brandon</h3>
             <h4>Freelancer</h4>
             <p>
-              <img src="/img/quote-sign-left.png" class="quote-sign-left" alt="">
+              <img src="/images/quote-sign-left.png" class="quote-sign-left" alt="">
               Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-              <img src="/img/quote-sign-right.png" class="quote-sign-right" alt="">
+              <img src="/images/quote-sign-right.png" class="quote-sign-right" alt="">
             </p>
           </div>
 
           <div class="testimonial-item">
-            <img src="/img/testimonial-5.jpg" class="testimonial-img" alt="">
+            <img src="/images/testimonial-5.jpg" class="testimonial-img" alt="">
             <h3>John Larson</h3>
             <h4>Store Owner</h4>
             <p>
-              <img src="/img/quote-sign-left.png" class="quote-sign-left" alt="">
+              <img src="/images/quote-sign-left.png" class="quote-sign-left" alt="">
               Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-              <img src="/img/quote-sign-right.png" class="quote-sign-right" alt="">
+              <img src="/images/quote-sign-right.png" class="quote-sign-right" alt="">
             </p>
           </div>-->
 

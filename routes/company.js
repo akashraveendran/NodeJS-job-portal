@@ -27,3 +27,4 @@ router.route("/accept-application/:id").get(acceptApplication);
 router.route("/reject-application/:id").get(rejectApplication);
 
 
+module.exports = router;

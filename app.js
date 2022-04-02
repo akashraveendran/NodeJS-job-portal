@@ -1,14 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const connectDB = require("./db/connection");
 require("dotenv").config();
+const session = require("express-session")
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
+const companyRouter = require("./routes/company")
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,6 +21,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 1000 * 60 * 60 } //max age 1 hour
+}))
 
 async function connect() {
   try {
@@ -32,6 +40,7 @@ async function connect() {
 connect();
 
 app.use('/', indexRouter);
+app.use("/company", companyRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
