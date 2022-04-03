@@ -5,7 +5,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const connectDB = require("./db/connection");
 require("dotenv").config();
-const session = require("express-session")
+const session = require("express-session");
+const fileUpload = require("express-fileupload")
 
 const indexRouter = require('./routes/index');
 const companyRouter = require("./routes/company")
@@ -18,6 +19,7 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(fileUpload());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
