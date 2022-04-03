@@ -96,11 +96,11 @@ const updateUserProfile = async (req, res) => {
       return res.redirect("/");
     }
     req.session.alertMessage = "Couldn't Update Retry"
-    res.redirect("/company")
+    res.redirect("/")
   } catch (error) {
     console.log(error);
     req.session.alertMessage = "Couldn't Update Retry"
-    res.redirect("/company")
+    res.redirect("/")
   }
 };
 

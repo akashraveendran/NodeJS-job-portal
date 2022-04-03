@@ -70,11 +70,34 @@ const getNewJobForm = function (req, res) {
 const createNewJob = function (req, res) {
     res.send("route is live")
 };
+//profile
+const getProfilePage = function (req, res) {
+    res.render("company/profile", { company: req.session.company })
+}
 const getCompanyUpdateForm = function (req, res) {
-    res.send("route is live")
+    res.render("company/update-company", { id: req.params.id })
 };
-const updateCompanyProfile = function (req, res) {
-    res.send("route is live")
+const updateCompanyProfile = async function (req, res) {
+    // console.log(req.body);
+    // console.log(req.files);
+    try {
+        let { id } = req.params;
+        req.body.completed = true;
+        const company = await CompanyModel.findOneAndUpdate({ _id: id }, req.body, { new: true });
+        if (company) {
+            let { image } = req.files;
+            await image.mv("./public/images/company/" + id + ".jpg");
+            req.session.company = company;
+            req.session.alertMessage = "Updated Profile successfully"
+            return res.redirect("/company");
+        }
+        req.session.alertMessage = "Couldn't Update Retry"
+        res.redirect("/company")
+    } catch (error) {
+        console.log(error);
+        req.session.alertMessage = "Couldn't Update Retry"
+        res.redirect("/company")
+    }
 };
 const getCompanyJobsPage = function (req, res) {
     res.send("route is live")
@@ -102,6 +125,7 @@ module.exports = {
     geCompanytHomePage,
     getNewJobForm,
     createNewJob,
+    getProfilePage,
     getCompanyUpdateForm,
     updateCompanyProfile,
     getCompanyJobsPage,

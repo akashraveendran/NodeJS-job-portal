@@ -30,6 +30,24 @@ const CompanySchema = new mongoose.Schema({
         trim: true,
         maxlength: [15, "job_status cannot be more than 15 characters"]
     },
+    bio: {
+        type: String,
+        trim: true
+    },
+    address: {
+        type: String,
+        trim: true,
+        maxlength: [100, "address cannot be more than 100 characters"]
+    },
+    area: {
+        type: String,
+        trim: true,
+        maxlength: [50, "area cannot be more than 15 characters"]
+    },
+    completed: {
+        type: Boolean,
+        default: false
+    }
 })
 
 module.exports = mongoose.model('Company', CompanySchema);

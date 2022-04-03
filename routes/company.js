@@ -8,6 +8,7 @@ const {
     createNewCompany,
     logout,
     geCompanytHomePage,
+    getProfilePage,
     getCompanyUpdateForm,
     updateCompanyProfile,
     getNewJobForm,
@@ -24,6 +25,7 @@ router.route('/login').get(getCompanyLogin).post(doCompanyLogin)
 router.route('/signup').get(getCompanySignup).post(createNewCompany);
 router.route('/').get(geCompanytHomePage);
 router.route("/logout").get(logout);
+router.route("/profile").get(getProfilePage)
 router.route("/update-company/:id").get(getCompanyUpdateForm).post(updateCompanyProfile);
 router.route("/add-new-job").get(getNewJobForm).post(createNewJob)
 router.route('/company-jobs/:id').get(getCompanyJobsPage);
