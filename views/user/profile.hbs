@@ -26,9 +26,8 @@
         {{#if user.completed}}
         <label for="formFile" class="form-label">Skills : <span class="bold-text"> {{user.skills}}</span></label>
         <label for="formFile" class="form-label">Education : <span class="bold-text"> {{user.education}}</span></label>
-        {{else}}
-        <a href="/update-user/{{user._id}}"><button type="submit" class="btn submit-btn">Update Profile</button></a>
         {{/if}}
+        <a href="/update-user/{{user._id}}"><button type="submit" class="btn submit-btn">Update Profile</button></a>
         <p style="margin-top: 2vh;"> Click to <a href="/">go back</a> </p>
 
     </div>

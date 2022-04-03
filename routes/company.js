@@ -21,14 +21,17 @@ const {
 
 } = require("../controllers/company-controller")
 
+//middleware for authentication
+const checkCompany = require('../middleware/checkCompany')
+
 router.route('/login').get(getCompanyLogin).post(doCompanyLogin)
 router.route('/signup').get(getCompanySignup).post(createNewCompany);
 router.route('/').get(geCompanytHomePage);
 router.route("/logout").get(logout);
-router.route("/profile").get(getProfilePage)
-router.route("/update-company/:id").get(getCompanyUpdateForm).post(updateCompanyProfile);
-router.route("/add-new-job").get(getNewJobForm).post(createNewJob)
-router.route('/company-jobs/:id').get(getCompanyJobsPage);
+router.route("/profile").get(checkCompany, getProfilePage)
+router.route("/update-company/:id").get(checkCompany, getCompanyUpdateForm).post(checkCompany, updateCompanyProfile);
+router.route("/add-new-job").get(checkCompany, getNewJobForm).post(checkCompany, createNewJob)
+router.route('/company-jobs/:id').get(checkCompany, getCompanyJobsPage);
 router.route('/company-applications/:id').get(getCompanyApplications);
 router.route("/short-list/:id").get(shortListApplication);
 router.route("/accept-application/:id").get(acceptApplication);

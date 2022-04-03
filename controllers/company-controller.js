@@ -1,6 +1,8 @@
 const bcrypt = require("bcrypt")
 const CompanyModel = require("../models/company-model")
 
+
+
 //signup
 const getCompanySignup = function (req, res) {
     res.render("company/signup", { title: "Company signup" })
