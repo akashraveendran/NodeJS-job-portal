@@ -1,27 +1,8 @@
 const bcrypt = require("bcrypt")
 const UserModel = require("../models/user-model")
 
-const getHomePage = function (req, res, next) {
-  let { alertMessage } = req.session;
-  if (req.session.user) {
-    let { user } = req.session; //fetching user and alert message stored inn session
-    res.render('user/home-page', { title: 'Job Portal', user, alertMessage });
-    delete req.session.alertMessage;
-  } else {
-    res.render('user/home-page', { title: 'Job Portal', alertMessage });
-    delete req.session.alertMessage;
-  }
-}
 
-const getUserLogin = (req, res) => {
-  if (req.session.user) {
-    res.redirect('/')
-  } else {
-    let alertMessage = req.session.alertMessage
-    res.render('user/login', { title: "login", alertMessage });
-    delete req.session.alertMessage;
-  }
-}
+//signup
 const getUserSignup = (req, res) => {
   let alertMessage = req.session.alertMessage
   res.render('user/signup', { title: "signup", alertMessage });
@@ -40,6 +21,16 @@ const createNewUser = async (req, res) => {
     console.log(error);
     req.session.alertMessage = "Error in creating New User. Retry !!!!!";
     res.redirect('/signup')
+  }
+}
+//login
+const getUserLogin = (req, res) => {
+  if (req.session.user) {
+    res.redirect('/')
+  } else {
+    let alertMessage = req.session.alertMessage
+    res.render('user/login', { title: "login", alertMessage });
+    delete req.session.alertMessage;
   }
 }
 const doUserLogin = async (req, res) => {
@@ -63,13 +54,28 @@ const doUserLogin = async (req, res) => {
     res.redirect("/login")
   }
 }
+//home page
+const getHomePage = function (req, res, next) {
+  let { alertMessage } = req.session;
+  if (req.session.user) {
+    let { user } = req.session; //fetching user and alert message stored inn session
+    res.render('user/home-page', { title: 'Job Portal', user, alertMessage });
+    delete req.session.alertMessage;
+  } else {
+    res.render('user/home-page', { title: 'Job Portal', alertMessage });
+    delete req.session.alertMessage;
+  }
+}
+//logout
 const logout = (req, res) => {
   req.session.user = null;
   req.session.alertMessage = "Logged Out Successfully!!!"
   res.redirect("/login")
 }
-const getJobsPage = (req, res) => {
-  res.render("user/job-list")
+//profile
+const getProfilePage = (req, res) => {
+  let { user } = req.session
+  res.render("user/profile", { user })
 }
 const getUpdateUserForm = (req, res) => {
   res.render("user/update-profile", { id: req.params.id })
@@ -79,6 +85,7 @@ const updateUserProfile = async (req, res) => {
   // console.log(req.files);
   try {
     let { id } = req.params;
+    req.body.completed = true;
     const user = await UserModel.findOneAndUpdate({ _id: id }, req.body, { new: true });
     if (user) {
       let { image, resume } = req.files;
@@ -96,6 +103,10 @@ const updateUserProfile = async (req, res) => {
     res.redirect("/company")
   }
 };
+
+const getJobsPage = (req, res) => {
+  res.render("user/job-list")
+}
 const getAllCompanies = (req, res) => {
 };
 const getJobApplicationForm = (req, res) => {
@@ -112,6 +123,7 @@ module.exports = {
   getUserSignup,
   createNewUser,
   doUserLogin,
+  getProfilePage,
   getUpdateUserForm,
   updateUserProfile,
   getJobsPage,

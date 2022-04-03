@@ -51,6 +51,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         trim: true,
         maxlength: [200, "Education cannot be more than 200 characters"]
+    },
+    completed: {
+        type: Boolean,
+        default: false
     }
 })
 

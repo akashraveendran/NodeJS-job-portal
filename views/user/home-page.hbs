@@ -191,7 +191,7 @@
                     {{#if user}}
                     <li class="menu-has-children"><a href="#">{{user.name}}</a>
                         <ul>
-                            <li><a href="/update-user/{{user._id}}"><button style="width:100%;">Update
+                            <li><a href="/profile"><button style="width:100%;">Your
                                         Profile</button></a>
                             </li><br>
                             <li><a href="/logout"><button style="width:100%;">Logout</button></a></li><br>
@@ -232,7 +232,11 @@
                             <div class="carousel-content">
                                 <h2>Get ahead.</h2>
                                 <h2>Get Your Dream Job!</h2>
+                                {{#if user}}
+                                <a href="/user-jobs" class="btn-get-started scrollto">Get Started</a>
+                                {{else}}
                                 <a href="/signup" class="btn-get-started scrollto">Get Started</a>
+                                {{/if}}
                             </div>
                         </div>
                     </div>

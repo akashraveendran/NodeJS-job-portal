@@ -6,6 +6,7 @@ const { getUserLogin,
     createNewUser,
     doUserLogin,
     getHomePage,
+    getProfilePage,
     getUpdateUserForm,
     updateUserProfile,
     getJobsPage,
@@ -21,6 +22,7 @@ router.route('/signup').get(getUserSignup).post(createNewUser);
 router.route('/login').get(getUserLogin).post(doUserLogin);
 router.route("/logout").get(logout)
 router.route('/').get(getHomePage);
+router.route("/profile").get(getProfilePage)
 router.route("/update-user/:id").get(getUpdateUserForm).post(updateUserProfile)
 router.route('/user-jobs').get(getJobsPage);
 router.route('/companies').get(getAllCompanies);
