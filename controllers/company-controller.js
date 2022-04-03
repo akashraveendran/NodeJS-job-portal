@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt")
-const CompanyModel = require("../models/company-model")
+const CompanyModel = require("../models/company-model");
+const JobModel = require("../models/job-model")
 
 
 
@@ -14,7 +15,7 @@ const createNewCompany = async function (req, res) {
         req.body.password = await bcrypt.hash(oldpassword, 10); //encrypting the password from company and adding it to the req.body object
         console.log(req.body);
         const company = await CompanyModel.create(req.body);
-        req.session.alertMessage = "uccessfully created an account"
+        req.session.alertMessage = "Successfully created an account"
         res.status(201).redirect("/company/login")
     } catch (error) {
         console.log(error);
@@ -67,10 +68,21 @@ const logout = function (req, res) {
     res.redirect("/company/login")
 }
 const getNewJobForm = function (req, res) {
-    res.send("route is live")
+    res.render("company/add-new-job", { company: req.session.company })
 };
-const createNewJob = function (req, res) {
-    res.send("route is live")
+const createNewJob = async function (req, res) {
+    console.log(req.body);
+    try {
+        let today = new Date().getDate();
+        req.body.datePosted = today;
+        const job = await JobModel.create(req.body);
+        req.session.alertMessage = "created  Job Successfully "
+        res.status(201).redirect("/company")
+    } catch (error) {
+        console.log(error);
+        req.session.alertMessage = "Error in creating New account. Retry !!!!!";
+        res.redirect('/company/add-new-job')
+    }
 };
 //profile
 const getProfilePage = function (req, res) {

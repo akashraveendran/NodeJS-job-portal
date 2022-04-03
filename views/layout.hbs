@@ -18,9 +18,14 @@
 </head>
 
 <body>
+  {{#if alertMessage}}
+  <div class="myAlert-top alert alert-success">
+    <strong>{{alertMessage}}</strong>
+  </div>
+  {{/if}}
   {{{body}}}
 
-
+  <script src="/javascripts/alert.js"></script>
 
 </body>
 
