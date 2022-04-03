@@ -32,6 +32,26 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         maxlength: [15, "job_status cannot be more than 15 characters"]
     },
+    image: {
+        type: String,
+        trim: true,
+        maxlength: [200, "image name cannot be more than 200 characters"]
+    },
+    resume: {
+        type: String,
+        trim: true,
+        maxlength: [200, "resume name cannot be more than 200 characters"]
+    },
+    skills: {
+        type: String,
+        trim: true,
+        maxlength: [200, "skills cannot be more than 200 characters"]
+    },
+    education: {
+        type: String,
+        trim: true,
+        maxlength: [200, "Education cannot be more than 200 characters"]
+    }
 })
 
 module.exports = mongoose.model('User', UserSchema);
