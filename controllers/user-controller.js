@@ -71,6 +71,31 @@ const logout = (req, res) => {
 const getJobsPage = (req, res) => {
   res.render("user/job-list")
 }
+const getUpdateUserForm = (req, res) => {
+  res.render("user/update-profile", { id: req.params.id })
+};
+const updateUserProfile = async (req, res) => {
+  // console.log(req.body);
+  // console.log(req.files);
+  try {
+    let { id } = req.params;
+    const user = await UserModel.findOneAndUpdate({ _id: id }, req.body, { new: true });
+    if (user) {
+      let { image, resume } = req.files;
+      await image.mv("./public/images/users/profile/" + id + ".jpg");
+      await resume.mv("./public/images/users/resume/" + id + ".pdf");
+      req.session.user = user;
+      req.session.alertMessage = "Updated Profile successfully"
+      return res.redirect("/");
+    }
+    req.session.alertMessage = "Couldn't Update Retry"
+    res.redirect("/company")
+  } catch (error) {
+    console.log(error);
+    req.session.alertMessage = "Couldn't Update Retry"
+    res.redirect("/company")
+  }
+};
 const getAllCompanies = (req, res) => {
 };
 const getJobApplicationForm = (req, res) => {
@@ -87,6 +112,8 @@ module.exports = {
   getUserSignup,
   createNewUser,
   doUserLogin,
+  getUpdateUserForm,
+  updateUserProfile,
   getJobsPage,
   getAllCompanies,
   getJobApplicationForm,

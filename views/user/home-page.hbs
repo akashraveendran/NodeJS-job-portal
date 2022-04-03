@@ -191,6 +191,9 @@
                     {{#if user}}
                     <li class="menu-has-children"><a href="#">{{user.name}}</a>
                         <ul>
+                            <li><a href="/update-user/{{user._id}}"><button style="width:100%;">Update
+                                        Profile</button></a>
+                            </li><br>
                             <li><a href="/logout"><button style="width:100%;">Logout</button></a></li><br>
                         </ul>
                     </li>
@@ -221,7 +224,7 @@
                     <div class="carousel-item active">
                         {{#if alertMessage}}
                         <div class="myAlert-top alert alert-success">
-                            <strong>Success!</strong> {{alertMessage}}
+                            <strong> {{alertMessage}}</strong>
                         </div>
                         {{/if}}
                         <div class="carousel-background"><img src="/images/intro-carousel/2.jpg" alt=""></div>
