@@ -185,22 +185,15 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="#intro">Home</a></li>
-                    <li><a href="internship.html">Jobs</a></li>
+                    <li><a href="internship.html">My Jobs</a></li>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#company">Companies</a></li>
-                    {{#if user}}
-                    <li class="menu-has-children"><a href="#">{{user.name}}</a>
+                    <li><a href="#company">Job Applications</a></li>
+                    {{#if company}}
+                    <li class="menu-has-children"><a href="#">{{company.name}}</a>
                         <ul>
-                            <li><a href="/logout"><button style="width:100%;">Logout</button></a></li><br>
-                        </ul>
-                    </li>
-                    {{else}}
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/signup">Signup</a></li>
-                    <li class="menu-has-children"><a href="#">For Employers</a>
-                        <ul>
-                            <li><a href="/company/login"><button style="width:100%;">Login</button></a></li><br>
-                            <li><a href="/company/signup"><button style="width:100%;">Sign Up</button></a></li>
+                            <li><a href="/company/update-profile/{{company._id}}"><button style="width:100%;">Update
+                                        Profile</button></a></li><br>
+                            <li><a href="/company/logout"><button style="width:100%;">Logout</button></a></li><br>
                         </ul>
                     </li>
                     {{/if}}
@@ -221,7 +214,7 @@
                     <div class="carousel-item active">
                         {{#if alertMessage}}
                         <div class="myAlert-top alert alert-success">
-                            <strong>Success!</strong> {{alertMessage}}
+                            <strong> {{alertMessage}} </strong>
                         </div>
                         {{/if}}
                         <div class="carousel-background"><img src="/images/intro-carousel/2.jpg" alt=""></div>

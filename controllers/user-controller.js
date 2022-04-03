@@ -2,12 +2,14 @@ const bcrypt = require("bcrypt")
 const UserModel = require("../models/user-model")
 
 const getHomePage = function (req, res, next) {
+  let { alertMessage } = req.session;
   if (req.session.user) {
-    let { user, alertMessage } = req.session; //fetching user and alert message stored inn session
+    let { user } = req.session; //fetching user and alert message stored inn session
     res.render('user/home-page', { title: 'Job Portal', user, alertMessage });
     delete req.session.alertMessage;
   } else {
-    res.render('user/home-page', { title: 'Job Portal' });
+    res.render('user/home-page', { title: 'Job Portal', alertMessage });
+    delete req.session.alertMessage;
   }
 }
 

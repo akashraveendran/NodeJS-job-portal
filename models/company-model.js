@@ -22,11 +22,11 @@ const CompanySchema = new mongoose.Schema({
         type: String,
         required: [true, "Must Provide password"],
         trim: true,
-        maxlength: [125, "password cannot be more than 125 characters"]
+        maxlength: [225, "password cannot be more than 125 characters"]
     },
-    work_status: {
+    category: {
         type: String,
-        required: [true, "Must Provide job_status"],
+        required: [true, "Must Provide company category"],
         trim: true,
         maxlength: [15, "job_status cannot be more than 15 characters"]
     },
