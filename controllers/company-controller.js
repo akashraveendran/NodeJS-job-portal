@@ -115,8 +115,9 @@ const updateCompanyProfile = async function (req, res) {
         res.redirect("/company")
     }
 };
-const getCompanyJobsPage = function (req, res) {
-    res.send("route is live")
+const getCompanyJobsPage = async function (req, res) {
+    const jobs = await JobModel.find({ company_id: req.params.id });
+    res.render("company/company-job-list", { jobs })
 };
 const getCompanyApplications = function (req, res) {
     res.send("route is live")

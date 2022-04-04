@@ -17,21 +17,21 @@
         rel="stylesheet">
 
     <!-- Bootstrap CSS File -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Libraries CSS Files -->
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
     <link href="/stylesheets/style.css" rel="stylesheet">
 
 </head>
 
-<body style="background: linear-gradient(to right, #DAD299, #B0DAB9);">
+<body>
 
     <!--==========================
     Header
@@ -47,37 +47,47 @@
 
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="/" style="margin:10px;">Home</a></li>
+                    <li><a href="/company" style="margin:10px;">Home</a></li>
+                    {{#if jobs}}
                     <li>
                         <form action="/search-jobs">
                             <input type="search" name="search" placeholder="Search Jobs">
                             <button type="submit" class="btn btn-success p-1">Search</button>
                         </form>
                     </li>
+                    {{/if}}
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
     </header><!-- #header -->
 
-    <section id="internship" style="margin-top: 14vh;">
+    <section id="internship" style="margin-top: 14vh;min-height:70vh">
         <div class="container">
-            <h2 class="heading pt-3" id="know-more">Online Trainings we offer:</h2>
+            {{#if jobs}}
+            <h2 class="heading" id="know-more">Online Trainings we offer:
+                <a href="/company/add-new-job" class="btn btn-outline-primary ms-5">Add New Job</a>
+            </h2>
             <div class="row">
                 {{#each jobs}}
                 <div class="col-sm-12">
                     <div class="card mb-3">
                         <div class="row g-0 align-items-center">
-                            <div class="col-md-4 ms-1">
-                                <img src="/images/company/{{company_id}}.jpg" class="img-fluid rounded-start" alt="..."
-                                    style="height: 250px;">
-                            </div>
-                            <div class="col-md-7">
+
+                            <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title" style="font-weight: 600;">{{title}}</h5>
-                                    <p class="card-text">{{description}}</p>
-                                    <p class="card-text"><small class="text-muted">posted {{days_ago}} days ago</small>
-                                        <a href="/apply-job/{{_id}}" class="btn btn-outline-primary ms-5">Apply
-                                            Now <i class="fa-solid fa-paper-plane"></i> </a>
+                                    <h5 class="card-title" style="font-weight: 600;">Title : {{title}}</h5>
+                                    <p class="card-text">Description : {{description}}</p>
+                                    <p class="card-text"><small class="text-muted">posted {{jobPosted}}</small>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card-body">
+                                    <p class="card-text justify-content-space-around">
+                                        <a href="/delete-job/{{_id}}" class="btn btn-outline-danger ms-5 mb-4">Delete
+                                            Job <i class="fa-solid fa-trash-can ms-1"></i></a> <br>
+                                        <a href="/update-job/{{_id}}" class="btn btn-outline-success ms-5">Update Job
+                                            <i class="fa-solid fa-pen-to-square"></i></a>
                                     </p>
                                 </div>
                             </div>
@@ -88,6 +98,11 @@
                 {{/each}}
 
             </div>
+            {{else}}
+            <h2 class="heading text-center pt-5" id="know-more">OOPS!!!! There Are No jobs Added By You <br>
+                <a href="/company/add-new-job" class="btn btn-outline-primary mt-5">Add New Job Now</a>
+            </h2>
+            {{/if}}
         </div>
     </section>
 
@@ -109,19 +124,19 @@
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
     <!-- JavaScript Libraries -->
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/jquery/jquery-migrate.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/superfish/hoverIntent.js"></script>
-    <script src="lib/superfish/superfish.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/superfish/hoverIntent.js"></script>
+    <script src="/lib/superfish/superfish.min.js"></script>
+    <script src="/lib/wow/wow.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/counterup/counterup.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
     <!-- Contact Form JavaScript File -->
     <script src="contactform/contactform.js"></script>
 

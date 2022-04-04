@@ -107,16 +107,16 @@ const updateUserProfile = async (req, res) => {
 };
 
 const getJobsPage = async (req, res) => {
-  const Jobs = await JobModel.find({});
+  const jobs = await JobModel.find({});
   //to calculate how many days ago the job was posted
-  Jobs.forEach((singleJob) => {
+  jobs.forEach((singleJob) => {
     // console.log(singleJob.datePosted);
     const posted = new Date(singleJob.datePosted)
     const today = new Date();
     const difference_in_time = today.getTime() - posted.getTime();
     singleJob.days_ago = Math.floor(difference_in_time / (1000 * 3600 * 24));
   });
-  res.render("user/job-list", { Jobs });
+  res.render("user/job-list", { jobs });
 }
 const getAllCompanies = (req, res) => {
 };

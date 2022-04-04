@@ -185,10 +185,9 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="#intro">Home</a></li>
-                    <li><a href="internship.html">My Jobs</a></li>
+                    <li><a href="/company/company-jobs/{{company._id}}">My Jobs</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#company">Job Applications</a></li>
-                    {{#if company}}
                     <li class="menu-has-children"><a href="#">{{company.name}}</a>
                         <ul>
                             <li><a href="/company/profile"><button style="width:100%;">Company
@@ -196,7 +195,6 @@
                             <li><a href="/company/logout"><button style="width:100%;">Logout</button></a></li><br>
                         </ul>
                     </li>
-                    {{/if}}
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
