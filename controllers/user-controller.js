@@ -1,3 +1,4 @@
+const JobModel = require("../models/job-model")
 const bcrypt = require("bcrypt")
 const UserModel = require("../models/user-model")
 
@@ -78,7 +79,8 @@ const getProfilePage = (req, res) => {
   res.render("user/profile", { user })
 }
 const getUpdateUserForm = (req, res) => {
-  res.render("user/update-profile", { id: req.params.id })
+  let { user } = req.session;
+  res.render("user/update-profile", { id: req.params.id, user })
 };
 const updateUserProfile = async (req, res) => {
   // console.log(req.body);
@@ -104,8 +106,16 @@ const updateUserProfile = async (req, res) => {
   }
 };
 
-const getJobsPage = (req, res) => {
-  res.render("user/job-list")
+const getJobsPage = async (req, res) => {
+  const Jobs = await JobModel.find({});
+  Jobs.forEach((singleJob) => {
+    console.log(singleJob.dateposted);
+    const posted = new Date(singleJob.dateposted)
+    const today = new Date();
+    const difference_in_time = today.getTime() - posted.getTime();
+    singleJob.days_ago = Math.floor(difference_in_time / (1000 * 3600 * 24));
+  });
+  res.render("user/job-list", { Jobs });
 }
 const getAllCompanies = (req, res) => {
 };

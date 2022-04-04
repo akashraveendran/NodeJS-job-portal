@@ -63,20 +63,21 @@
         <div class="container">
             <h2 class="heading" id="know-more">Online Trainings we offer:</h2>
             <div class="row">
+                {{#each Jobs}}
                 <div class="col-sm-4">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/intern/android.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="/images/company/{{company_id}}.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Android App Development</h5>
-                            <p>Build your own Android music player app</p>
+                            <h5 class="card-title">{{title}}</h5>
+                            <p>{{description}}</p>
                         </div>
                         <div class="card-body">
-                            <p>Duration : 6 Weeks</p>
+                            <p>posted {{days_ago}}</p>
                             <a href="#" class="card-link">Know More</a>
                         </div>
                     </div>
                 </div>
-
+                {{/each}}
                 <div class="col-sm-4">
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="/images/intern/web-development.jpg" alt="Card image cap">
