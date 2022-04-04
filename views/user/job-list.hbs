@@ -64,21 +64,78 @@
             <h2 class="heading" id="know-more">Online Trainings we offer:</h2>
             <div class="row">
                 {{#each Jobs}}
-                <div class="col-sm-4">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/images/company/{{company_id}}.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{title}}</h5>
-                            <p>{{description}}</p>
-                        </div>
-                        <div class="card-body">
-                            <p>posted {{days_ago}}</p>
-                            <a href="#" class="card-link">Know More</a>
+                <div class="col-sm-12">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="/images/company/{{company_id}}.jpg" class="img-fluid rounded-start" alt="..."
+                                    style="height: 250px;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="font-weight: 600;">{{title}}</h5>
+                                    <p class="card-text">{{description}}</p>
+                                    <p class="card-text"><small class="text-muted">posted {{days_ago}} days ago</small>
+                                        <a href="/apply-job/{{_id}}" class="btn btn-outline-primary ms-5">Apply
+                                            Now <i class="fa-solid fa-paper-plane"></i> </a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
                 {{/each}}
-                <div class="col-sm-4">
+
+            </div>
+        </div>
+    </section>
+
+
+    <!--==========================
+    Footer
+  ============================-->
+    <footer id="footer">
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong>JobPortal</strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                Designed by Us
+            </div>
+        </div>
+    </footer><!-- #footer -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-migrate.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/superfish/hoverIntent.js"></script>
+    <script src="lib/superfish/superfish.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js"></script>
+
+    <!-- Template Main Javascript File -->
+    <script src="/javascripts/main.js"></script>
+
+</body>
+
+</html>
+
+
+
+<!--
+    <div class="col-sm-4">
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="/images/intern/web-development.jpg" alt="Card image cap">
                         <div class="card-body">
@@ -218,47 +275,4 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!--==========================
-    Footer
-  ============================-->
-    <footer id="footer">
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong>JobPortal</strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-                Designed by Us
-            </div>
-        </div>
-    </footer><!-- #footer -->
-
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-    <!-- JavaScript Libraries -->
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/jquery/jquery-migrate.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/superfish/hoverIntent.js"></script>
-    <script src="lib/superfish/superfish.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-    <!-- Contact Form JavaScript File -->
-    <script src="contactform/contactform.js"></script>
-
-    <!-- Template Main Javascript File -->
-    <script src="/javascripts/main.js"></script>
-
-</body>
-
-</html>
+-->

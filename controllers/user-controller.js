@@ -108,9 +108,10 @@ const updateUserProfile = async (req, res) => {
 
 const getJobsPage = async (req, res) => {
   const Jobs = await JobModel.find({});
+  //to calculate how many days ago the job was posted
   Jobs.forEach((singleJob) => {
-    console.log(singleJob.dateposted);
-    const posted = new Date(singleJob.dateposted)
+    // console.log(singleJob.datePosted);
+    const posted = new Date(singleJob.datePosted)
     const today = new Date();
     const difference_in_time = today.getTime() - posted.getTime();
     singleJob.days_ago = Math.floor(difference_in_time / (1000 * 3600 * 24));

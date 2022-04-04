@@ -73,7 +73,7 @@ const getNewJobForm = function (req, res) {
 const createNewJob = async function (req, res) {
     console.log(req.body);
     try {
-        let today = new Date().getDate();
+        let today = new Date().toLocaleDateString();
         req.body.datePosted = today;
         const job = await JobModel.create(req.body);
         req.session.alertMessage = "created  Job Successfully "
@@ -89,7 +89,9 @@ const getProfilePage = function (req, res) {
     res.render("company/profile", { company: req.session.company })
 }
 const getCompanyUpdateForm = function (req, res) {
-    res.render("company/update-company", { id: req.params.id })
+    const { company } = req.session;
+    console.log(company);
+    res.render("company/update-company", { id: req.params.id, company })
 };
 const updateCompanyProfile = async function (req, res) {
     // console.log(req.body);

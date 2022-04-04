@@ -16,21 +16,21 @@
                 <div class="form-group">
                     <label for="formFile" class="form-label">Bio</label>
                     <textarea class="form-control" name="bio" id="education"
-                        placeholder="Enter a short Description about Company" required></textarea>
+                        placeholder="Enter a short Description about Company" required>{{company.bio}}</textarea>
                 </div>
             </div>
             <div class="mb-3">
                 <div class="form-group">
                     <label for="formFile" class="form-label">Address</label>
                     <textarea class="form-control" name="address" id="education" placeholder="Enter Company Address"
-                        required></textarea>
+                        required>{{company.address}}</textarea>
                 </div>
             </div>
             <div class="mb-3">
                 <div class="form-group">
                     <label for="formFile" class="form-label">Area</label>
-                    <input type="text" class="form-control" name="area" id="education"
-                        placeholder="Town/City of company" required>
+                    <input type="text" class="form-control" name="area" id="education" value="{{company.area}}"
+                        placeholder=" Town/City of company" required>
                 </div>
             </div>
             <button type="submit" class="btn submit-btn">Update Profile</button>
