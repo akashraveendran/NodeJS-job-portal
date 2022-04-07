@@ -76,8 +76,11 @@
                                     <h5 class="card-title" style="font-weight: 600;">{{title}}</h5>
                                     <p class="card-text">{{description}}</p>
                                     <p class="card-text"><small class="text-muted">posted {{days_ago}} days ago</small>
-                                        <a href="/apply-job/{{_id}}" class="btn btn-outline-primary ms-5">Apply
-                                            Now <i class="fa-solid fa-paper-plane"></i> </a>
+                                    <form action="/apply-job/{{_id}}" method="post">
+                                        <input type="hidden" name="company_id" value="{{company_id}}">
+                                        <button class="btn btn-outline-primary ms-5">Apply
+                                            Now <i class="fa-solid fa-paper-plane"></i> </button>
+                                    </form>
                                     </p>
                                 </div>
                             </div>

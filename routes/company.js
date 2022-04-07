@@ -32,7 +32,7 @@ router.route("/profile").get(checkCompany, getProfilePage)
 router.route("/update-company/:id").get(checkCompany, getCompanyUpdateForm).post(checkCompany, updateCompanyProfile);
 router.route("/add-new-job").get(checkCompany, getNewJobForm).post(checkCompany, createNewJob)
 router.route('/company-jobs/:id').get(checkCompany, getCompanyJobsPage);
-router.route('/company-applications/:id').get(getCompanyApplications);
+router.route('/company-applications').get(checkCompany, getCompanyApplications);
 router.route("/short-list/:id").get(shortListApplication);
 router.route("/accept-application/:id").get(acceptApplication);
 router.route("/reject-application/:id").get(rejectApplication);

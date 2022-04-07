@@ -28,7 +28,7 @@ router.route("/profile").get(checkUser, getProfilePage)
 router.route("/update-user/:id").get(checkUser, getUpdateUserForm).post(checkUser, updateUserProfile)
 router.route('/user-jobs').get(getJobsPage);
 router.route('/companies').get(getAllCompanies);
-router.route('/apply-job/:id').get(applyJob) //job id
+router.route('/apply-job/:id').post(checkUser, applyJob) //job id
 // router.route('/notifications/:id').get(getUserNotifications);
 router.route('/user-applications/:id').get(getUserApplications);
 

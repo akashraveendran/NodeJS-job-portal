@@ -1,6 +1,7 @@
 const JobModel = require("../models/job-model")
 const bcrypt = require("bcrypt")
 const UserModel = require("../models/user-model")
+const ApplicationModel = require("../models/application-model")
 
 
 //signup
@@ -71,7 +72,7 @@ const getHomePage = function (req, res, next) {
 const logout = (req, res) => {
   req.session.user = null;
   req.session.alertMessage = "Logged Out Successfully!!!"
-  res.redirect("/login")
+  res.redirect("/")
 }
 //profile
 const getProfilePage = (req, res) => {
@@ -122,7 +123,34 @@ const getAllCompanies = (req, res) => {
 };
 const getJobApplicationForm = (req, res) => {
 };
-const applyJob = (req, res) => {
+const applyJob = async (req, res) => {
+  console.log(req.body)
+  let { _id: user_id,
+    name: username,
+    email: user_mail,
+    phone_no: user_mobile
+  } = req.session.user;
+  const applicationObj = {
+    job_id: req.params.id,
+    company_id: req.body.company_id,
+    user_id,
+    username,
+    user_mobile,
+    user_mail,
+    applyDate: new Date().toLocaleDateString()
+  };
+  console.log(applicationObj)
+  try {
+    const application = await ApplicationModel.create(applicationObj);
+    req.session.alertMessage = "Applied To Job successfully !!!!"
+    res.redirect("/")
+  } catch (error) {
+    console.log(error);
+    req.session.alertMessage = "Couldn't apply !!! Please Retry."
+    res.status(500).redirect("/user-jobs")
+  }
+
+
 };
 const getUserNotifications = (req, res) => {
 };

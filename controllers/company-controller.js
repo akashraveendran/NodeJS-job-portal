@@ -1,4 +1,5 @@
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const ApplicationModel = require("../models/application-model");
 const CompanyModel = require("../models/company-model");
 const JobModel = require("../models/job-model")
 
@@ -65,7 +66,7 @@ const geCompanytHomePage = function (req, res) {
 const logout = function (req, res) {
     req.session.company = null;
     req.session.alertMessage = "Logged Out Successfully!!!"
-    res.redirect("/company/login")
+    res.redirect("/company")
 }
 const getNewJobForm = function (req, res) {
     res.render("company/add-new-job", { company: req.session.company })
@@ -119,8 +120,10 @@ const getCompanyJobsPage = async function (req, res) {
     const jobs = await JobModel.find({ company_id: req.params.id });
     res.render("company/company-job-list", { jobs })
 };
-const getCompanyApplications = function (req, res) {
-    res.send("route is live")
+const getCompanyApplications = async function (req, res) {
+    const { _id } = req.session.company;
+    const applications = await ApplicationModel.find({ company_id: _id })
+    res.render("company/application-list", { applications })
 };
 const shortListApplication = function (req, res) {
     res.send("route is live")
