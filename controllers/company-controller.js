@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const { application } = require("express");
 const ApplicationModel = require("../models/application-model");
 const CompanyModel = require("../models/company-model");
 const JobModel = require("../models/job-model")
@@ -122,17 +123,32 @@ const getCompanyJobsPage = async function (req, res) {
 };
 const getCompanyApplications = async function (req, res) {
     const { _id } = req.session.company;
-    const applications = await ApplicationModel.find({ company_id: _id })
+    const applications = await ApplicationModel.find({ company_id: _id, status: { $ne: "rejected" } });
+    applications.forEach((singleApplication) => {
+        if (singleApplication.status == "applied")
+            singleApplication.applied = true;
+        else if (singleApplication.status == "shortlisted")
+            singleApplication.shortlisted = true;
+    })
     res.render("company/application-list", { applications })
 };
-const shortListApplication = function (req, res) {
-    res.send("route is live")
+const shortListApplication = async function (req, res) {
+    const { id } = req.params;
+    const application = await ApplicationModel.findOneAndUpdate({ _id: id }, { status: "shortlisted" });
+    req.session.alertMessage = "Application shortlisted successfully!!!"
+    res.redirect("/company/company-applications");
 };
-const acceptApplication = function (req, res) {
-    res.send("route is live")
+const acceptApplication = async function (req, res) {
+    const { id } = req.params;
+    const application = await ApplicationModel.findOneAndUpdate({ _id: id }, { status: "accepted" });
+    req.session.alertMessage = "Application Accepted successfully!!!"
+    res.redirect("/company/company-applications");
 };
-const rejectApplication = function (req, res) {
-    res.send("route is live")
+const rejectApplication = async function (req, res) {
+    const { id } = req.params;
+    const application = await ApplicationModel.findOneAndUpdate({ _id: id }, { status: "rejected" });
+    req.session.alertMessage = "Application is Rejected!!!"
+    res.redirect("/company/company-applications");
 };
 
 

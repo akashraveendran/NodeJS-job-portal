@@ -33,9 +33,9 @@ router.route("/update-company/:id").get(checkCompany, getCompanyUpdateForm).post
 router.route("/add-new-job").get(checkCompany, getNewJobForm).post(checkCompany, createNewJob)
 router.route('/company-jobs/:id').get(checkCompany, getCompanyJobsPage);
 router.route('/company-applications').get(checkCompany, getCompanyApplications);
-router.route("/short-list/:id").get(shortListApplication);
-router.route("/accept-application/:id").get(acceptApplication);
-router.route("/reject-application/:id").get(rejectApplication);
+router.route("/short-list/:id").get(checkCompany, shortListApplication);
+router.route("/accept-application/:id").get(checkCompany, acceptApplication);
+router.route("/reject-application/:id").get(checkCompany, rejectApplication);
 
 
 module.exports = router;

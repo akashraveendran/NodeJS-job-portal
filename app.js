@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const hbs = require("handlebars")
+
 const connectDB = require("./db/connection");
 require("dotenv").config();
 const session = require("express-session");
@@ -16,6 +18,28 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+//iff helper to perform the normal if condition with two operands
+hbs.registerHelper('iff', function (a, operator, b, opts) {
+  var bool = false;
+  switch (operator) {
+    case '==':
+      bool = a == b;
+      break;
+    case '>':
+      bool = a > b;
+      break;
+    case '<':
+      bool = a < b;
+      break;
+    default:
+      throw "Unknown operator " + operator;
+  }
+  if (bool) {
+    return opts.fn(this);
+  } else {
+    return opts.inverse(this);
+  }
+});
 
 app.use(logger('dev'));
 app.use(express.json());

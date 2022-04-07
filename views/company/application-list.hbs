@@ -53,6 +53,12 @@
         </div>
     </header><!-- #header -->
 
+    {{#if alertMessage}}
+    <div class="myAlert-top alert alert-success">
+        <strong>{{alertMessage}}</strong>
+    </div>
+    {{/if}}
+
     <section id="internship" style="margin-top: 14vh;min-height:70vh">
         <div class="container">
             {{#if applications}}
@@ -88,12 +94,32 @@
                             <div class="col-md-3">
                                 <div class="card-body">
                                     <p class="card-text justify-content-space-around">
-                                        <a href="/delete-job/{{_id}}"
+                                        {{#if applied}}
+                                        <a href="/company/short-list/{{_id}}"
                                             class="btn btn-outline-success ms-5 mb-4">Shortlist
-                                            <i class="fa-solid fa-list-check"></i> <br>
-                                            <a href="/update-job/{{_id}}" class="btn btn-outline-danger ms-5">Reject
-                                                <i class="fa-solid fa-xmark"></i></a>
+                                            <i class="fa-solid fa-list-check"></i>
+                                        </a>
+                                        <br>
+                                        <a href="/company/reject-application/{{_id}}"
+                                            class="btn btn-outline-danger ms-5"
+                                            onclick="return confirm('Are you sure you want to reject this JOB APPLICATION?');">Reject
+                                            <i class="fa-solid fa-xmark"></i></a>
                                     </p>
+                                    {{else}}
+                                    {{#if shortlisted}}
+                                    <a href="/company/accept-application/{{_id}}"
+                                        class="btn btn-outline-success ms-5 mb-4">Accept
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </a>
+                                    <br>
+                                    <a href="/company/reject-application/{{_id}}" class="btn btn-outline-danger ms-5"
+                                        onclick="return confirm('Are you sure you want to reject this JOB APPLICATION?');">Reject
+                                        <i class="fa-solid fa-xmark"></i></a>
+                                    </p>
+                                    {{else}}
+                                    <p class="card-text text-success">Accepted the Application</p>
+                                    {{/if}}
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>
