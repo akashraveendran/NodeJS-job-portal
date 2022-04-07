@@ -121,8 +121,7 @@ const getJobsPage = async (req, res) => {
 }
 const getAllCompanies = (req, res) => {
 };
-const getJobApplicationForm = (req, res) => {
-};
+
 const applyJob = async (req, res) => {
   console.log(req.body)
   let { _id: user_id,
@@ -152,8 +151,8 @@ const applyJob = async (req, res) => {
 
 
 };
-const getUserNotifications = (req, res) => {
-};
+// const getUserNotifications = (req, res) => {
+// };
 const getUserApplications = (req, res) => {
 };
 module.exports = {
@@ -167,9 +166,7 @@ module.exports = {
   updateUserProfile,
   getJobsPage,
   getAllCompanies,
-  getJobApplicationForm,
   applyJob,
-  getUserNotifications,
   getUserApplications,
   logout
 }

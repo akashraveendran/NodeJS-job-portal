@@ -12,7 +12,6 @@ const { getUserLogin,
     getJobsPage,
     getAllCompanies,
     applyJob,
-    getUserNotifications,
     getUserApplications,
     logout
 } = require("../controllers/user-controller")
@@ -30,7 +29,7 @@ router.route('/user-jobs').get(getJobsPage);
 router.route('/companies').get(getAllCompanies);
 router.route('/apply-job/:id').post(checkUser, applyJob) //job id
 // router.route('/notifications/:id').get(getUserNotifications);
-router.route('/user-applications/:id').get(getUserApplications);
+router.route('/user-applications/:id').get(checkUser, getUserApplications);
 
 
 

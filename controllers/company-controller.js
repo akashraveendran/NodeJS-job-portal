@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { application } = require("express");
+
 const ApplicationModel = require("../models/application-model");
 const CompanyModel = require("../models/company-model");
 const JobModel = require("../models/job-model")
@@ -150,8 +150,6 @@ const rejectApplication = async function (req, res) {
     req.session.alertMessage = "Application is Rejected!!!"
     res.redirect("/company/company-applications");
 };
-
-
 module.exports = {
     getCompanyLogin,
     doCompanyLogin,
